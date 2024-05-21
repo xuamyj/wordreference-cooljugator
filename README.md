@@ -1,5 +1,34 @@
+<h1>Todo</h1>
+
+## Soon
+
+- Swap button: change "Eng -> Greek", search placeholder, mark "Greek -> Eng" version as not yet implemented
+- Search bar: half width
+- 3 sections: margin/padding, at least display the word put in searh
+- Header & footer should be own file
+
+## Later
+
+- "Greek -> Eng": can I use Gtranslate keyboard
+
+## How I think it will work? (Eng -> Greek first)
+
+- look up english word and figure out if it's a noun, verb, or other?
+- noun "road":
+  - Gtranslate: "the road is here", "the roads are here", "i see the road", "i see the roads"
+  - Wordreference: "road"
+  - Cooljugator: (none)
+- verb "run":
+  - Gtranslate: "I run" -> "τρέχω"
+  - Wordreference: "run"
+  - Cooljugator: "τρέχω"
+- other "quickly":
+  - Gtranslate: ^
+  - Wordrefernce: ^
+  - Cooljugator: (none)
+- Remember any of these can give invalid results
+
 <a href="https://demo-nextjs-with-supabase.vercel.app/">
-  <img alt="Next.js and Supabase Starter Kit - the fastest way to build apps with Next.js and Supabase" src="https://demo-nextjs-with-supabase.vercel.app/opengraph-image.png">
   <h1 align="center">Next.js and Supabase Starter Kit</h1>
 </a>
 
