@@ -3,7 +3,6 @@
 ## Soon
 
 - Swap button: change "Eng -> Greek", search placeholder, mark "Greek -> Eng" version as not yet implemented
-- Search bar: half width
 - 3 sections: margin/padding, at least display the word put in searh
 - Header & footer should be own file
 
