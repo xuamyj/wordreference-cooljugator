@@ -10,6 +10,8 @@ import Wordreference from "@/components/lookup_words/Wordreference";
 import Gtranslate from "@/components/lookup_words/Gtranslate";
 import { LookupWordsInner } from "./client";
 
+let i = 0;
+
 export default async function ProtectedPage() {
   const supabase = createClient();
 
@@ -19,6 +21,14 @@ export default async function ProtectedPage() {
 
   if (!user) {
     return redirect("/login");
+  }
+
+  const testFunction = async () => {
+    "use server"
+    console.log('start');
+    await new Promise<void>((resolve)=> setTimeout(()=> resolve(), 1000)) // ignore this line, it is just a sleep (replace this with whatever async call you need to do )
+    console.log('end');
+    return String(i++)
   }
 
   return (
@@ -39,7 +49,7 @@ export default async function ProtectedPage() {
         </nav>
       </div>
 
-      <LookupWordsInner/>
+      <LookupWordsInner someFunction={testFunction}/>
 
       <footer className="w-full border-t border-t-foreground/10 p-8 flex justify-center text-center text-xs">
         <p>
