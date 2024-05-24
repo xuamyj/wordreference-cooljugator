@@ -18,17 +18,21 @@ export function LookupWordsInner() {
       <h2 className="font-bold text-4xl mb-4">Lookup Words</h2>
       
       <div className="flex items-center gap-4">
-        English -> Greek
-        <button className="py-2 px-4 rounded-md no-underline bg-btn-background hover:bg-btn-background-hover">
-          Swap (not implemented)
+        {isEngToGreek ? "English -> Greek" : "Greek -> English"}
+        <button 
+          className="py-2 px-4 rounded-md no-underline bg-btn-background hover:bg-btn-background-hover"
+          onClick={() => setIsEngToGreek(isEngToGreek => !isEngToGreek)}
+        >
+          {isEngToGreek ? "Swap (not implemented)" : "Swap"} 
         </button>
       </div>
 
       <div className="flex items-center gap-4">
         <input
-          className="rounded-md px-4 py-2 bg-inherit border"
+          className={`rounded-md px-4 py-2 border ${!isEngToGreek ? 'bg-gray-200 text-gray-300' : 'bg-inherit'}`}
           name="word"
-          placeholder='ex. "walk" or "road"'
+          placeholder={isEngToGreek ? 'ex. "walk" or "road"' : 'ex. "τρέχω" or "έξοδος"'}
+          disabled={!isEngToGreek}  // Disable input when isEngToGreek is false
           required
           value={searchInput}
           onChange={(e)=>setSearchInput(e.currentTarget.value)}
