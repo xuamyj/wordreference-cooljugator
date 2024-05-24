@@ -10,7 +10,16 @@ import Wordreference from "@/components/lookup_words/Wordreference";
 import Gtranslate from "@/components/lookup_words/Gtranslate";
 import { LookupWordsInner } from "./client";
 
+import Dictionary from "en-dictionary";
+import fs from 'fs';
+import path from 'path';
+
 let i = 0;
+
+// (async () => {console.log(wordnet.get("3.0"))
+//   const dictionary = new Dictionary(wordnet.get("3.0"));
+//     await dictionary.init();
+// })()
 
 export default async function ProtectedPage() {
   const supabase = createClient();
@@ -27,6 +36,18 @@ export default async function ProtectedPage() {
     "use server"
     console.log('start');
     await new Promise<void>((resolve)=> setTimeout(()=> resolve(), 1000)) // ignore this line, it is just a sleep (replace this with whatever async call you need to do )
+    const wordnet_str = "./en-wordnet-3_0";
+    const dictionary = new Dictionary(wordnet_str);
+    await dictionary.init();
+    // try {
+    //   const files = await fs.promises.readdir(wordnet_str);
+    //   console.log("Files in directory:", files);
+    // } catch (error) {
+    //   console.error("Error reading directory:", error);
+    // }
+    let result = dictionary.searchFor(["yet"]);
+    console.log(result);
+
     console.log('end');
     return String(i++)
   }
